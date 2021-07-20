@@ -6,52 +6,32 @@ namespace ExerciseMark
 {
     class Program
     {
-       public static int x;
-       public static int y;
-
         static void Main(string[] args)
-        {
-            
-            
-
-
+        {    //Inventory 
             Inventory inventory = new Inventory();
-            inventory.setmaxSize(x=200);
-            inventory.setmaxWeight(y=200);
+            inventory.setmaxSize(200);
+            inventory.setmaxWeight(200);
             Item myItem = new Item("aa",10,10);
             Item myItem2= new Item("aa0", 10, 10);
             Item myItem3 = new Item("Mark", 181, 10);
             Item myItem4 = new Item("Mathieu ", 30, 30);
-            
             inventory.AddItem(myItem);
             inventory.AddItem(myItem2);
             inventory.AddItem(myItem3);
             inventory.AddItem(myItem4);
-
             myItem.Size = 5000;
             myItem.Weight = 5000;
-            
-          
-
-
-            Console.WriteLine("Sum of Weight:"+inventory.getSumWeight() + " out of " + y);
-            Console.WriteLine("Sum of Size:" + inventory.getSumSize() + " out of " + x);
-            for (int i = 0; i < inventory.GetItems(); i++)
-            {
-                Console.WriteLine(inventory.GetItem(i).Name + " " + inventory.GetItem(i).Weight + " " + inventory.GetItem(i).Size);
-            }
-                
-
-            
-            
-
-
-
-
-
-
+            //Inventory1
+            Inventory inventory1 = new Inventory();
+            inventory1.setmaxSize(400);
+            inventory1.setmaxWeight(400);
+            Item myItema = new Item("aa2", 10, 10);
+            Item myItemb = new Item("aa02", 10, 10);
+            inventory1.AddItem(myItema);
+            inventory1.AddItem(myItemb);
+            //Display Inventory
+            inventory.ShowInventory();
+            inventory1.ShowInventory();
         }
-
-
     }
 }

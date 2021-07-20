@@ -32,18 +32,14 @@ namespace ExerciseMark
             set
             {
 
-                if (value > Program.y || value <= 0)
+                if (value > GetMaxWeight || value <= 0)
                 {
-
-                  
-
                 }
                 else
                 {
                     this.weight = value;
 
                 }
-
                 
             }
         }
@@ -54,19 +50,12 @@ namespace ExerciseMark
             get { return size; }
             set
             {
-                if (value > Program.x || value <= 0)
+                if (value > GetMaxSize || value <= 0)
                 {
-
-                    
-
                 }
                 else {
                     this.size = value;
-
-                }
-
-              
-                
+                }             
             }
         }
 
