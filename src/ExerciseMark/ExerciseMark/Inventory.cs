@@ -6,8 +6,18 @@ namespace ExerciseMark
     public class Inventory
     {
         List<Item> itemA;
-        private static int maxSize;
-        private static int maxWeight;
+        private int maxSize;
+        private int maxWeight;
+
+
+        public int getMaxSize { get { return maxSize; }  }
+
+        public int setMaxSize { set { maxSize = value; } }
+
+        public int getMaxWeight { get { return maxWeight; }  }
+
+        public int setMaxWeight { set { maxWeight = value; } }
+
 
         public Inventory()
         {
@@ -18,32 +28,13 @@ namespace ExerciseMark
 
 
         public void ShowInventory() {
-            Console.WriteLine("Sum of Weight:" + getSumWeight() + " of "+GetMaxWeight);
-            Console.WriteLine("Sum of Size:" + getSumSize() + " of " + GetMaxSize);
+            Console.WriteLine("Sum of Weight:" + getSumWeight() + " of "+ maxWeight);
+            Console.WriteLine("Sum of Size:" + getSumSize() + " of " + maxSize);
                 for (int i = 0; i < GetItems(); i++)
             {
                 Console.WriteLine(GetItem(i).Name +" "+GetItem(i).Weight+" "+GetItem(i).Size);
             }
         }
-
-    public  int GetMaxSize { get { return maxSize; }  }
-
-        public   int GetMaxWeight { get { return maxWeight; } }
-
-        public void setmaxSize(int setmaxSize)
-        {
-
-            maxSize = setmaxSize;
-
-        }
-
-        public void setmaxWeight(int setmaxWeight)
-        {
-
-            maxWeight = setmaxWeight;
-
-        }
-
 
         public void AddItem(Item in_item)
         {

@@ -9,8 +9,8 @@ namespace ExerciseMark
         static void Main(string[] args)
         {    //Inventory 
             Inventory inventory = new Inventory();
-            inventory.setmaxSize(200);
-            inventory.setmaxWeight(200);
+            inventory.setMaxSize = 200;
+            inventory.setMaxWeight = 200;
             Item myItem = new Item("aa",10,10);
             Item myItem2= new Item("aa0", 10, 10);
             Item myItem3 = new Item("Mark", 181, 10);
@@ -21,17 +21,25 @@ namespace ExerciseMark
             inventory.AddItem(myItem4);
             myItem.Size = 5000;
             myItem.Weight = 5000;
+
             //Inventory1
             Inventory inventory1 = new Inventory();
-            inventory1.setmaxSize(400);
-            inventory1.setmaxWeight(400);
+            inventory1.setMaxSize=200;
+            inventory1.setMaxWeight=220;
             Item myItema = new Item("aa2", 10, 10);
             Item myItemb = new Item("aa02", 10, 10);
             inventory1.AddItem(myItema);
             inventory1.AddItem(myItemb);
+
             //Display Inventory
             inventory.ShowInventory();
             inventory1.ShowInventory();
+
+            //testing for code breaking 
+            inventory.setMaxSize = 600000;
+            inventory.setMaxWeight = 9000000;
+            inventory1.setMaxSize = 60440000;
+            inventory1.setMaxWeight = 87553400;
         }
     }
 }

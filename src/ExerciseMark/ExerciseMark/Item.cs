@@ -32,7 +32,7 @@ namespace ExerciseMark
             set
             {
 
-                if (value > GetMaxWeight || value <= 0)
+                if (value > 200 || value <= 0)
                 {
                 }
                 else
@@ -50,7 +50,7 @@ namespace ExerciseMark
             get { return size; }
             set
             {
-                if (value > GetMaxSize || value <= 0)
+                if (value > 200 || value <= 0)
                 {
                 }
                 else {
