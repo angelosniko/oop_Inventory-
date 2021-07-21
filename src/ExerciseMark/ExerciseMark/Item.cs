@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ExerciseMark
 {
-    public class Item:Inventory
+    public class Item
     {
 
         private string name;
@@ -25,23 +25,42 @@ namespace ExerciseMark
             }
         }
 
+        public Inventory Inventory { get; set; }
+
 
         public int Weight
         {
+
+
             get { return weight; }
             set
             {
-
-                if (value > 200 || value <= 0)
+                if (Inventory != null)
                 {
+                    if (value > Inventory.MaxWeight)
+                    {
+                        throw (new ArgumentException("Value is bigger than Max Weight of Inventory"));
+                    }
+                    else if (value <= 0)
+                    {
+                        throw (new ArgumentException("Value is smaller than zero"));
+
+                    }
+                    else
+                    {
+                        this.weight = value;
+                    }
                 }
                 else
                 {
-                    this.weight = value;
+
+                    weight = value;
 
                 }
-                
             }
+
+
+
         }
 
 
@@ -50,12 +69,26 @@ namespace ExerciseMark
             get { return size; }
             set
             {
-                if (value > 200 || value <= 0)
+                if (Inventory != null)
                 {
+                    if (value > Inventory.MaxSize )
+                    {
+                        throw (new ArgumentException("Value is bigger than Max Size of Inventory"));
+                    }
+                    else if (value <= 0) {
+                        throw (new ArgumentException("Value is smaller than zero"));
+
+                    }
+                    else
+                    {
+                        this.size = value;
+                    }
                 }
                 else {
-                    this.size = value;
-                }             
+
+                    size = value;
+                
+                }
             }
         }
 

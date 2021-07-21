@@ -10,14 +10,10 @@ namespace ExerciseMark
         private int maxWeight;
 
 
-        public int getMaxSize { get { return maxSize; }  }
 
-        public int setMaxSize { set { maxSize = value; } }
+        public int MaxSize { get { return maxSize; } set { maxSize = value; } }
 
-        public int getMaxWeight { get { return maxWeight; }  }
-
-        public int setMaxWeight { set { maxWeight = value; } }
-
+        public int MaxWeight { get {return maxWeight; } set { maxWeight = value; } }
 
         public Inventory()
         {
@@ -43,6 +39,7 @@ namespace ExerciseMark
 
             if (getSumWeight() < maxWeight && getSumSize() < maxSize)
             {
+                in_item.Inventory = this;
             }
             else
             {
