@@ -7,21 +7,31 @@ namespace ExerciseMark
     public class Item
     {
 
-        private string name;
-        private int weight;
-        private int size;
+        private string? name;
+        private int? weight;
+        private int? size;
 
 
         public string Name
         {
-            get { return name; }
+            get { 
+                return name; 
+            }
             set
             {
-                if (value != null)
+                if (null == name)
                 {
-                    this.name = value;
-                }
 
+                    if (value != null)
+                    {
+                        this.name = value;
+                    }
+
+                }
+                else {
+
+                    throw new InvalidOperationException("Value of Name cannot be changed");
+                }
             }
         }
 
@@ -30,64 +40,78 @@ namespace ExerciseMark
 
         public int Weight
         {
-
-
-            get { return weight; }
+            get { 
+                return (int)weight; 
+            }
             set
             {
-                if (Inventory != null)
+                if (null == weight)
                 {
-                    if (value > Inventory.MaxWeight)
+                    if (Inventory != null)
                     {
-                        throw (new ArgumentException("Value is bigger than Max Weight of Inventory"));
-                    }
-                    else if (value <= 0)
-                    {
-                        throw (new ArgumentException("Value is smaller than zero"));
+                        if (value > Inventory.MaxWeight)
+                        {
+                            throw (new ArgumentException("Value is bigger than Max Weight of Inventory"));
+                        }
+                        else if (value <= 0)
+                        {
+                            throw (new ArgumentException("Value is smaller than zero"));
 
+                        }
+                        else
+                        {
+                            this.weight = value;
+                        }
                     }
                     else
                     {
-                        this.weight = value;
+
+                        weight = value;
+
                     }
                 }
-                else
-                {
-
-                    weight = value;
+                else {
+                    throw new InvalidOperationException("Value of Weight cannot be changed");
 
                 }
+
             }
-
-
 
         }
 
 
         public  int Size
         {
-            get { return size; }
+            get { return (int)size; }
             set
             {
-                if (Inventory != null)
+                if (null == size)
                 {
-                    if (value > Inventory.MaxSize )
+                    if (Inventory != null)
                     {
-                        throw (new ArgumentException("Value is bigger than Max Size of Inventory"));
-                    }
-                    else if (value <= 0) {
-                        throw (new ArgumentException("Value is smaller than zero"));
+                        if (value > Inventory.MaxSize)
+                        {
+                            throw (new ArgumentException("Value is bigger than Max Size of Inventory"));
+                        }
+                        else if (value <= 0)
+                        {
+                            throw (new ArgumentException("Value is smaller than zero"));
 
+                        }
+                        else
+                        {
+                            this.size = value;
+                        }
                     }
                     else
                     {
-                        this.size = value;
+
+                        size = value;
+
                     }
                 }
                 else {
-
-                    size = value;
-                
+                    throw new InvalidOperationException("Value of Size cannot be changed");
                 }
             }
         }

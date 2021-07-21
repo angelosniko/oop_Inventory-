@@ -1,24 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ExerciseMark
 {
     public class Inventory
     {
-        List<Item> itemA;
-        private int maxSize;
-        private int maxWeight;
+        List<Item> items;
+        private int? maxSize;
+        private int? maxWeight;
 
+        public int MaxSize { 
+            get {
 
+                int sum=items.Sum(x => x.Size);
+                if (sum < maxSize)
+                {
+                    return (int)maxSize;
+                }
+                else {  throw (new ArgumentException("The sum is bigger than the maxSize")); }
+                 } 
+            set {
+                if (null == maxSize)
+                {
+                    maxSize = value;
+                }
+                else { throw (new InvalidOperationException("The value of Size cannot be changed")); }
+                } }
 
-        public int MaxSize { get { return maxSize; } set { maxSize = value; } }
+        public int MaxWeight
+        {
+            get
+            {
 
-        public int MaxWeight { get {return maxWeight; } set { maxWeight = value; } }
+                int sum = items.Sum(x => x.Weight);
+                if (sum < maxWeight)
+                {
+                    return (int)maxWeight;
+                }
+                else { throw (new ArgumentException("The sum is bigger than the maxWeight")); }
+            }
+            set {
+                if (null == maxWeight)
+                {
+                    maxWeight = value;
+                }
+                else { throw new InvalidOperationException("The value of Weight cannot be changed"); }
+                }
+        }
 
         public Inventory()
         {
 
-            itemA = new List<Item>();
+            items = new List<Item>();
 
         }
 
@@ -34,7 +68,7 @@ namespace ExerciseMark
 
         public void AddItem(Item in_item)
         {
-            itemA.Add(in_item);
+            items.Add(in_item);
 
 
             if (getSumWeight() < maxWeight && getSumSize() < maxSize)
@@ -43,15 +77,16 @@ namespace ExerciseMark
             }
             else
             {
-                itemA.Remove(in_item);
-                Console.WriteLine("Cannot be added the inventory, the item with the Name: " + in_item.Name);
+                items.Remove(in_item);
+                //Console.WriteLine("Cannot be added the inventory, the item with the Name: " + in_item.Name);
+                throw (new ArgumentException("Item with the Name:"+in_item.Name+" cannot be added to the inventory"));
             }
 
         }
 
         public Item GetItem(int index)
         {
-            return itemA[index];
+            return items[index];
         }
 
 
@@ -60,9 +95,9 @@ namespace ExerciseMark
             int sum1 = 0;
 
 
-            for (int i = 0; i < itemA.Count; i++)
+            for (int i = 0; i < items.Count; i++)
             {
-                sum1 = sum1 + itemA[i].Size;
+                sum1 = sum1 + items[i].Size;
 
             }
 
@@ -77,14 +112,13 @@ namespace ExerciseMark
             int sum = 0;
 
 
-            for (int i = 0; i < itemA.Count; i++)
+            for (int i = 0; i < items.Count; i++)
             {
-                sum = sum + itemA[i].Weight;
+                sum = sum + items[i].Weight;
 
             }
 
             return sum;
-
 
         }
 
@@ -92,7 +126,7 @@ namespace ExerciseMark
         public int GetItems()
         {
 
-            var item = itemA.Count;
+            var item = items.Count;
 
             return item;
 
@@ -101,7 +135,7 @@ namespace ExerciseMark
 
         public void removeItem(int index)
         {
-            itemA.RemoveAt(index);
+            items.RemoveAt(index);
         }
 
 

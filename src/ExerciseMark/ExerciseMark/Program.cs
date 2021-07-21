@@ -32,14 +32,6 @@ namespace ExerciseMark
             //Display Inventory
             inventory.ShowInventory();
             inventory2.ShowInventory();
-
-            //testing for code breaking 
-            //myItem.Size = 5000;
-            //myItem.Weight = 5000;
-            inventory.MaxSize = 600000;
-            //inventory.setMaxWeight = 9000000;
-            //inventory2.setMaxSize = 60440000;
-            //inventory2.setMaxWeight = 87553400;
         }
     }
 }
