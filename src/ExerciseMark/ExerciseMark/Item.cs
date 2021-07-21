@@ -6,25 +6,25 @@ namespace ExerciseMark
 {
     public class Item
     {
-
-        private string? name;
-        private int? weight;
-        private int? size;
+     
+        private string? _name;
+        private int? _weight;
+        private int? _size;
 
 
         public string Name
         {
             get { 
-                return name; 
+                return _name; 
             }
             set
             {
-                if (null == name)
+                if (null == _name)
                 {
 
                     if (value != null)
                     {
-                        this.name = value;
+                        this._name = value;
                     }
 
                 }
@@ -41,11 +41,11 @@ namespace ExerciseMark
         public int Weight
         {
             get { 
-                return (int)weight; 
+                return (int)_weight; 
             }
             set
             {
-                if (null == weight)
+                if (null == _weight)
                 {
                     if (Inventory != null)
                     {
@@ -60,13 +60,13 @@ namespace ExerciseMark
                         }
                         else
                         {
-                            this.weight = value;
+                            this._weight = value;
                         }
                     }
                     else
                     {
 
-                        weight = value;
+                        _weight = value;
 
                     }
                 }
@@ -82,10 +82,10 @@ namespace ExerciseMark
 
         public  int Size
         {
-            get { return (int)size; }
+            get { return (int)_size; }
             set
             {
-                if (null == size)
+                if (null == _size)
                 {
                     if (Inventory != null)
                     {
@@ -100,13 +100,13 @@ namespace ExerciseMark
                         }
                         else
                         {
-                            this.size = value;
+                            this._size = value;
                         }
                     }
                     else
                     {
 
-                        size = value;
+                        _size = value;
 
                     }
                 }
@@ -117,11 +117,11 @@ namespace ExerciseMark
         }
 
 
-        public Item(string Name, int Weight, int Size)
+        public Item(string name, int weight, int size)
         {
-            this.Name = Name;
-            this.Weight = Weight;
-            this.Size = Size;
+            Name = name;
+            Weight = weight;
+            Size = size;
         }
     }
 }
