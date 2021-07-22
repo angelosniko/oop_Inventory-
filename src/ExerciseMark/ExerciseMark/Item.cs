@@ -6,11 +6,15 @@ namespace ExerciseMark
 {
     public class Item
     {
+
+        
      
         private string? _name;
         private int? _weight;
         private int? _size;
 
+
+        
 
         public string Name
         {

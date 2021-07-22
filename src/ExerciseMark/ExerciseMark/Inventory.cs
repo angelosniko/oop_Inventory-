@@ -6,27 +6,34 @@ namespace ExerciseMark
 {
     public class Inventory
     {
+
         List<Item> ItemsInventory;
         private int? _maxSize;
         private int? _maxWeight;
 
-        public int MaxSize { 
-            get {
+        public OutsideInventory OutsideInventory { get; set; }
 
-                int sum=ItemsInventory.Sum(x => x.Size);
+        public int MaxSize
+        {
+            get
+            {
+
+                int sum = ItemsInventory.Sum(x => x.Size);
                 if (sum < _maxSize)
                 {
                     return (int)_maxSize;
                 }
-                else {  throw (new ArgumentException("The sum is bigger than the maxSize")); }
-                 } 
-            set {
+                else { throw (new ArgumentException("The sum is bigger than the maxSize")); }
+            }
+            set
+            {
                 if (null == _maxSize)
                 {
                     _maxSize = value;
                 }
                 else { throw (new InvalidOperationException("The value of Size cannot be changed")); }
-                } }
+            }
+        }
 
         public int MaxWeight
         {
@@ -40,13 +47,14 @@ namespace ExerciseMark
                 }
                 else { throw (new ArgumentException("The sum is bigger than the maxWeight")); }
             }
-            set {
+            set
+            {
                 if (null == _maxWeight)
                 {
                     _maxWeight = value;
                 }
                 else { throw new InvalidOperationException("The value of Weight cannot be changed"); }
-                }
+            }
         }
 
         public Inventory()
@@ -57,29 +65,36 @@ namespace ExerciseMark
         }
 
 
-        public void ShowInventory() {
-            Console.WriteLine("Sum of Weight:" + GetWeightSum() + " of "+ _maxWeight);
+        public void ShowInventory()
+        {
+            Console.WriteLine("Inside Inventory");
+            Console.WriteLine("Sum of Weight:" + GetWeightSum() + " of " + _maxWeight);
             Console.WriteLine("Sum of Size:" + GetSizeSum() + " of " + _maxSize);
-                for (int i = 0; i < GetItemsCount(); i++)
+            for (int i = 0; i < GetItemsCount(); i++)
             {
-                Console.WriteLine(GetItem(i).Name +" "+GetItem(i).Weight+" "+GetItem(i).Size);
+                Console.WriteLine(GetItem(i).Name + " " + GetItem(i).Weight + " " + GetItem(i).Size);
             }
         }
 
         public void AddItem(Item itemAdd)
         {
+
             ItemsInventory.Add(itemAdd);
+
+           
+
 
 
             if (GetWeightSum() <= _maxWeight && GetSizeSum() <= _maxSize)
             {
                 itemAdd.Inventory = this;
+                //OutsideInventory.RemoveItem(itemAdd);
             }
             else
             {
                 ItemsInventory.Remove(itemAdd);
                 //Console.WriteLine("Cannot be added the inventory, the item with the Name: " + in_item.Name);
-                throw (new ArgumentException("Item with the Name:"+itemAdd.Name+" cannot be added to the inventory"));
+                throw (new ArgumentException("Item with the Name:" + itemAdd.Name + " cannot be added to the inventory"));
             }
 
         }
@@ -133,11 +148,13 @@ namespace ExerciseMark
         }
 
 
-        public void RemoveItem(int index)
+        public void RemoveItem(Item itemRemove)
         {
-            ItemsInventory.RemoveAt(index);
+            OutsideInventory.addItem(itemRemove);
+            ItemsInventory.Remove(itemRemove);
+
+
+
         }
-
-
     }
 }
