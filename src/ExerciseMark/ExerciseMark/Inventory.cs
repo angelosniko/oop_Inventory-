@@ -6,13 +6,11 @@ namespace ExerciseMark
 {
     public class Inventory
     {
-
         List<Item> ItemsInventory;
         private int? _maxSize;
         private int? _maxWeight;
-
-        public OutsideInventory OutsideInventory { get; set; }
-
+       
+   
         public int MaxSize
         {
             get
@@ -61,48 +59,56 @@ namespace ExerciseMark
         {
 
             ItemsInventory = new List<Item>();
-
+          
         }
-
-
-        public void ShowInventory()
+    
+        public void GetItems()
         {
             Console.WriteLine("Inside Inventory");
             Console.WriteLine("Sum of Weight:" + GetWeightSum() + " of " + _maxWeight);
             Console.WriteLine("Sum of Size:" + GetSizeSum() + " of " + _maxSize);
-            for (int i = 0; i < GetItemsCount(); i++)
+            Console.WriteLine("Name "+"Weight "+"Size ");
+            for (int i = 0; i < GetItemsInventoryCount(); i++)
             {
-                Console.WriteLine(GetItem(i).Name + " " + GetItem(i).Weight + " " + GetItem(i).Size);
+                Console.WriteLine(GetItemInventory(i).Name + " " + GetItemInventory(i).Weight + " " + GetItemInventory(i).Size);
             }
         }
+
+ 
 
         public void AddItem(Item itemAdd)
         {
 
             ItemsInventory.Add(itemAdd);
 
-           
-
-
-
             if (GetWeightSum() <= _maxWeight && GetSizeSum() <= _maxSize)
             {
+                
                 itemAdd.Inventory = this;
-                //OutsideInventory.RemoveItem(itemAdd);
+              
             }
             else
             {
                 ItemsInventory.Remove(itemAdd);
-                //Console.WriteLine("Cannot be added the inventory, the item with the Name: " + in_item.Name);
-                throw (new ArgumentException("Item with the Name:" + itemAdd.Name + " cannot be added to the inventory"));
+                    throw (new ArgumentException("Item with the Name:" + itemAdd.Name +"with Size value "+itemAdd.Size+
+                        "with Weight value "+itemAdd.Weight+ " cannot be added to the inventory"));
             }
 
         }
 
-        public Item GetItem(int index)
+        public Item GetItemInventory(int index)
         {
             return ItemsInventory[index];
         }
+
+
+        public List<String> GetInvent() {
+            var item = ItemsInventory.Select(p => p.Name).ToList();
+            return item;
+            
+         
+        }
+  
 
 
         public int GetSizeSum()
@@ -119,7 +125,7 @@ namespace ExerciseMark
             return sum1;
 
         }
-
+    
 
         public int GetWeightSum()
         {
@@ -138,7 +144,7 @@ namespace ExerciseMark
         }
 
 
-        public int GetItemsCount()
+        public int GetItemsInventoryCount()
         {
 
             var itemCount = ItemsInventory.Count;
@@ -149,12 +155,8 @@ namespace ExerciseMark
 
 
         public void RemoveItem(Item itemRemove)
-        {
-            OutsideInventory.addItem(itemRemove);
+        {            
             ItemsInventory.Remove(itemRemove);
-
-
-
         }
     }
 }

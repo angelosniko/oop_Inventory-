@@ -1,20 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace ExerciseMark
 {
     public class Item
-    {
+    { 
 
-        
-     
         private string? _name;
         private int? _weight;
         private int? _size;
-
-
-        
 
         public string Name
         {
@@ -23,26 +19,29 @@ namespace ExerciseMark
             }
             set
             {
-                if (null == _name)
-                {
-
-                    if (value != null)
+                
+                    if (null == _name)
                     {
-                        this._name = value;
+
+                        if (value != null)
+                        {
+                            this._name = value;
+                        }
+
+                    }
+                    else
+                    {
+
+                        throw new InvalidOperationException("Value of Name cannot be changed");
                     }
 
-                }
-                else {
 
-                    throw new InvalidOperationException("Value of Name cannot be changed");
-                }
-            }
+                }            
         }
 
         public Inventory Inventory { get; set; }
 
-
-        public int Weight
+          public int Weight
         {
             get { 
                 return (int)_weight; 
@@ -89,6 +88,7 @@ namespace ExerciseMark
             get { return (int)_size; }
             set
             {
+               
                 if (null == _size)
                 {
                     if (Inventory != null)
@@ -97,6 +97,7 @@ namespace ExerciseMark
                         {
                             throw (new ArgumentException("Value is bigger than Max Size of Inventory"));
                         }
+                        
                         else if (value <= 0)
                         {
                             throw (new ArgumentException("Value is smaller than zero"));
@@ -115,11 +116,12 @@ namespace ExerciseMark
                     }
                 }
                 else {
-                    throw new InvalidOperationException("Value of Size cannot be changed");
+                    //throw new InvalidOperationException("Value of Size cannot be changed");
                 }
             }
         }
 
+ 
 
         public Item(string name, int weight, int size)
         {
