@@ -6,11 +6,14 @@ namespace ExerciseMark
 {
     public class Inventory
     {
-        List<Item> ItemsInventory;
+        List<Item> ItemsInventory { get; set; }
         private int? _maxSize;
         private int? _maxWeight;
-       
-   
+        public bool _test = false;
+
+
+        public bool Test { get { return _test; } }
+
         public int MaxSize
         {
             get
@@ -64,20 +67,24 @@ namespace ExerciseMark
     
         public void GetItems()
         {
-            Console.WriteLine("Inside Inventory");
+            
+            Console.WriteLine("---"+"INVENTORY"+"---");
             Console.WriteLine("Sum of Weight:" + GetWeightSum() + " of " + _maxWeight);
             Console.WriteLine("Sum of Size:" + GetSizeSum() + " of " + _maxSize);
+            Console.WriteLine("---Details---");
             Console.WriteLine("Name "+"Weight "+"Size ");
             for (int i = 0; i < GetItemsInventoryCount(); i++)
             {
-                Console.WriteLine(GetItemInventory(i).Name + " " + GetItemInventory(i).Weight + " " + GetItemInventory(i).Size);
+                Console.WriteLine(GetItemInventory(i).Name + "  " + GetItemInventory(i).Weight + "  " + GetItemInventory(i).Size);
             }
+            Console.WriteLine("---------------------------");
         }
 
  
 
         public void AddItem(Item itemAdd)
         {
+            _test = true;
 
             ItemsInventory.Add(itemAdd);
 
@@ -85,6 +92,7 @@ namespace ExerciseMark
             {
                 
                 itemAdd.Inventory = this;
+                _test = false;
               
             }
             else

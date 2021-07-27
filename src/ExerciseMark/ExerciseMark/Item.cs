@@ -7,11 +7,9 @@ namespace ExerciseMark
 {
     public class Item
     { 
-
         private string? _name;
         private int? _weight;
         private int? _size;
-
         public string Name
         {
             get { 
@@ -19,7 +17,8 @@ namespace ExerciseMark
             }
             set
             {
-                
+                //if (Inventory.Test == true)
+                //{
                     if (null == _name)
                     {
 
@@ -35,6 +34,11 @@ namespace ExerciseMark
                         throw new InvalidOperationException("Value of Name cannot be changed");
                     }
 
+                //}
+                //else {
+
+                //    this._name = value;
+                //}
 
                 }            
         }
@@ -68,7 +72,6 @@ namespace ExerciseMark
                     }
                     else
                     {
-
                         _weight = value;
 
                     }
@@ -110,7 +113,6 @@ namespace ExerciseMark
                     }
                     else
                     {
-
                         _size = value;
 
                     }
@@ -120,8 +122,6 @@ namespace ExerciseMark
                 }
             }
         }
-
- 
 
         public Item(string name, int weight, int size)
         {
