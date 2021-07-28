@@ -7,54 +7,33 @@ namespace ExerciseMark
 {
     public class Item
     { 
-        private string? _name;
-        private int? _weight;
-        private int? _size;
+        private string _name;
+        private int _weight;
+        private int _size;
+
         public string Name
         {
             get { 
                 return _name; 
             }
-            set
-            {
-                //if (Inventory.Test == true)
-                //{
-                    if (null == _name)
-                    {
-
+            set { 
                         if (value != null)
                         {
                             this._name = value;
                         }
+                    }        
+            }
 
-                    }
-                    else
-                    {
-
-                        throw new InvalidOperationException("Value of Name cannot be changed");
-                    }
-
-                //}
-                //else {
-
-                //    this._name = value;
-                //}
-
-                }            
-        }
-
-        public Inventory Inventory { get; set; }
+          public Inventory Inventory { get; set; }
 
           public int Weight
         {
             get { 
-                return (int)_weight; 
+                return _weight; 
             }
             set
             {
-                if (null == _weight)
-                {
-                    if (Inventory != null)
+                       if (Inventory != null)
                     {
                         if (value > Inventory.MaxWeight)
                         {
@@ -63,7 +42,6 @@ namespace ExerciseMark
                         else if (value <= 0)
                         {
                             throw (new ArgumentException("Value is smaller than zero"));
-
                         }
                         else
                         {
@@ -73,38 +51,27 @@ namespace ExerciseMark
                     else
                     {
                         _weight = value;
-
                     }
                 }
-                else {
-                    throw new InvalidOperationException("Value of Weight cannot be changed");
-
-                }
-
-            }
-
+ 
+            
         }
 
 
         public  int Size
         {
-            get { return (int)_size; }
+            get { return _size; }
             set
             {
-               
-                if (null == _size)
-                {
-                    if (Inventory != null)
+                        if (Inventory != null)
                     {
                         if (value > Inventory.MaxSize)
                         {
                             throw (new ArgumentException("Value is bigger than Max Size of Inventory"));
-                        }
-                        
+                        }                 
                         else if (value <= 0)
                         {
                             throw (new ArgumentException("Value is smaller than zero"));
-
                         }
                         else
                         {
@@ -114,12 +81,7 @@ namespace ExerciseMark
                     else
                     {
                         _size = value;
-
-                    }
-                }
-                else {
-                    //throw new InvalidOperationException("Value of Size cannot be changed");
-                }
+                   } 
             }
         }
 
