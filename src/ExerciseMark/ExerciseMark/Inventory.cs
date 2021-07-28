@@ -57,8 +57,7 @@ namespace ExerciseMark
         }
     
         public void GetItems()
-        {
-            
+        { 
             Console.WriteLine("---"+"INVENTORY"+"---");
             Console.WriteLine("Sum of Weight:" + GetWeightSum() + " of " + _maxWeight);
             Console.WriteLine("Sum of Size:" + GetSizeSum() + " of " + _maxSize);
@@ -92,12 +91,6 @@ namespace ExerciseMark
         {
             return ItemsInventory[index];
         }
-
-        public List<String> GetInvent() {
-            var item = ItemsInventory.Select(p => p.Name).ToList();
-            return item;
-              }
-
         public int GetSizeSum()
         {
             int sum1 = 0;

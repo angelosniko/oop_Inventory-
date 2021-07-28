@@ -27,6 +27,7 @@ namespace ExerciseMark
             inventory2.MaxWeight = 300;
             inventory2.AddItem(myItem);
             inventory2.AddItem(myItem2);
+            inventory2.RemoveItem(myItem2);
             inventory2.GetItems();
         }
     }
