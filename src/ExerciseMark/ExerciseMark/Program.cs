@@ -16,11 +16,12 @@ namespace ExerciseMark
             Item myItem3 = new Item("Mark", 150, 10);
             Item myItem4 = new Item("Math ", 30, 30);
             Item myItem5 = new Item("Math2 ", 100, 30);
-            myItem3.Name = "Matheiu";
-            myItem3.Weight = 110;
+          
             inventory.AddItem(myItem3);
             inventory.AddItem(myItem4);
             inventory.AddItem(myItem2);
+            myItem3.Name = "Matheiu";
+            myItem3.Size = 161;
             //inventory.AddItem(myItem2);
             inventory.DisplayInventory();
         }

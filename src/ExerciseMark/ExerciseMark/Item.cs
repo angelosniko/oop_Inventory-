@@ -63,7 +63,7 @@ namespace ExerciseMark
             {
                         if (Inventory != null)
                     {
-                        if (_size-value > Inventory.MaxSize)
+                        if (_size-value > Inventory.MaxSize - Inventory.GetSizeSum())
                         {
                             throw new ArgumentException("Value is bigger than Max Size of Inventory");
                         }                 

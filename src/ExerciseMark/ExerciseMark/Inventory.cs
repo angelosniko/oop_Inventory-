@@ -90,17 +90,23 @@ namespace ExerciseMark
             {
                 sum1 = sum1 + _inventoryList[i].Size;
             }
-            return sum1;
+            if (sum1 <= MaxSize) { return sum1; }
+            else { throw new ArgumentException("Sum is greater than Size"); }
+           
         }
     
         public int GetWeightSum()
         {
+
             int sum = 0;
             for (int i = 0; i < _inventoryList.Count; i++)
             {
                 sum = sum + _inventoryList[i].Weight;
             }
-            return sum;
+
+            if (sum <= MaxWeight) { return sum; }
+            else { throw new ArgumentException("Sum is greater than Weight"); }
+           
         }
 
         public int GetItemsInventoryCount()
