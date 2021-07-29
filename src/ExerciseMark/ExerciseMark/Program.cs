@@ -21,9 +21,9 @@ namespace ExerciseMark
             inventory.AddItem(myItem3);
             inventory.AddItem(myItem4);
             inventory.AddItem(myItem2);
+            //inventory.AddItem(myItem2);
             inventory.AddItem(myItem5);
             inventory.DisplayInventory();
-            inventory.GetItems();
             //Inventory2
             //Inventory inventory2 = new Inventory();
             //inventory2.MaxSize = 300;

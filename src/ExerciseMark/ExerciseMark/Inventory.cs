@@ -60,22 +60,24 @@ namespace ExerciseMark
 
         public void AddItem(Item itemAdd)
         {
-            _inventoryList.Add(itemAdd);
-
-            if (GetWeightSum() <= _maxWeight && GetSizeSum() <= _maxSize)
+            if (_inventoryList.Contains(itemAdd))
             {
-                
-                itemAdd.Inventory = this;
+                throw new ArgumentException("Duplicate value");
             }
-            else
-            {
-                _inventoryList.Remove(itemAdd);
-                //throw (new ArgumentException("Item with the Name: " + itemAdd.Name + " with Size value " + itemAdd.Size +
-                //    " with Weight value " + itemAdd.Weight + " cannot be added to the inventory"));
+            else {
+                _inventoryList.Add(itemAdd);
+                if (GetWeightSum() <= _maxWeight && GetSizeSum() <= _maxSize)
+                {
+                    itemAdd.Inventory = this;
+                }
+                else
+                {
+                    _inventoryList.Remove(itemAdd);
+                    //throw (new ArgumentException("Item with the Name: " + itemAdd.Name + " with Size value " + itemAdd.Size +
+                    //    " with Weight value " + itemAdd.Weight + " cannot be added to the inventory"));
+                }
             }
         }
-
-      
 
         public Item GetItemInventory(int index)
         {

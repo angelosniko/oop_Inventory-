@@ -83,6 +83,9 @@ namespace ExerciseMark
             }
         }
 
+       
+
+        
         public Item(string name, int weight, int size)
         { 
             Name = name;
