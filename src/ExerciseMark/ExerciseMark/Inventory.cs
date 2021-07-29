@@ -43,11 +43,9 @@ namespace ExerciseMark
             }
         }
 
-  
-    
         public void DisplayInventory()
         { 
-            Console.WriteLine("---"+"INVENTORY"+"---");
+            Console.WriteLine("---!"+"INVENTORY"+"!---");
             Console.WriteLine("Sum of Weight:" + GetWeightSum() + " of " + _maxWeight);
             Console.WriteLine("Sum of Size:" + GetSizeSum() + " of " + _maxSize);
             Console.WriteLine("---Details---");
@@ -56,6 +54,7 @@ namespace ExerciseMark
             {
                 Console.WriteLine(GetItemInventory(i).Name + "  " + GetItemInventory(i).Weight + "  " + GetItemInventory(i).Size);
             }
+            
             Console.WriteLine("---------------------------");
         }
 
@@ -75,6 +74,8 @@ namespace ExerciseMark
                 //    " with Weight value " + itemAdd.Weight + " cannot be added to the inventory"));
             }
         }
+
+      
 
         public Item GetItemInventory(int index)
         {
