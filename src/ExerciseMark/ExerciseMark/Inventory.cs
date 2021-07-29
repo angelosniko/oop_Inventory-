@@ -65,16 +65,16 @@ namespace ExerciseMark
                 throw new ArgumentException("Duplicate value");
             }
             else {
-                _inventoryList.Add(itemAdd);
-                if (GetWeightSum() <= _maxWeight && GetSizeSum() <= _maxSize)
+                
+                if ((GetWeightSum()+itemAdd.Weight) <= _maxWeight && (GetSizeSum()+itemAdd.Size) <= _maxSize)
                 {
+                    _inventoryList.Add(itemAdd);
                     itemAdd.Inventory = this;
                 }
                 else
                 {
-                    _inventoryList.Remove(itemAdd);
-                    //throw (new ArgumentException("Item with the Name: " + itemAdd.Name + " with Size value " + itemAdd.Size +
-                    //    " with Weight value " + itemAdd.Weight + " cannot be added to the inventory"));
+                    throw (new ArgumentException("Item with the Name: " + itemAdd.Name + " with Size value " + itemAdd.Size +
+                        " with Weight value " + itemAdd.Weight + " cannot be added to the inventory"));
                 }
             }
         }
