@@ -26,44 +26,45 @@ namespace ExerciseMark
          
           public Inventory Inventory { get; set; }
 
-          public int Weight     
+        public int Weight
         {
-            get { 
-                return _weight;   
+            get
+            {
+                return _weight;
             }
             set
-            { 
-                       if (Inventory != null)
+            {
+                if (Inventory != null)
+                {
+                    if (value-_weight > Inventory.MaxWeight - Inventory.GetWeightSum())
                     {
-                        if (_weight-value > Inventory.MaxWeight-Inventory.GetWeightSum())
-                        {
-                            throw new ArgumentException("Value is bigger than Max Weight of Inventory");
-                        }
-                        else if (value <= 0)
-                        {
-                            throw new ArgumentException("Value is smaller than zero");
-                        }
-                        else
-                        {
-                           _weight = value;
-                        }
+                        throw new ArgumentException("Value is bigger than Max Weight of Inventory");
+                    }
+                    else if (value <= 0)
+                    {
+                        throw new ArgumentException("Value is smaller than zero");
                     }
                     else
                     {
                         _weight = value;
                     }
-                } 
+                }
+                else
+                {
+                    _weight = value;
+                }
+            }
         }
 
 
-        public  int Size
+        public int Size
         {
             get { return _size; }
             set
             {
                         if (Inventory != null)
                     {
-                        if (_size-value > Inventory.MaxSize - Inventory.GetSizeSum())
+                        if (value-_size > Inventory.MaxSize - Inventory.GetSizeSum())
                         {
                             throw new ArgumentException("Value is bigger than Max Size of Inventory");
                         }                 
