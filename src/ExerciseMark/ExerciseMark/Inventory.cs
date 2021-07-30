@@ -15,8 +15,8 @@ namespace ExerciseMark
             _inventoryList = new List<Item>();
         }
 
-        public List<Item> GetItems() {
-            return _inventoryList;
+        public List<Item> GetItemsSnapshots() {
+            return new List<Item>(_inventoryList);
         }
 
         public int MaxSize
@@ -58,23 +58,23 @@ namespace ExerciseMark
             Console.WriteLine("---------------------------");
         }
 
-        public void AddItem(Item itemAdd)
+        public void AddItem(Item addedItem)
         {
-            if (_inventoryList.Contains(itemAdd))
+            if (_inventoryList.Contains(addedItem))
             {
                 throw new ArgumentException("Duplicate value");
             }
             else {
                 
-                if ((GetWeightSum()+itemAdd.Weight) <= _maxWeight && (GetSizeSum()+itemAdd.Size) <= _maxSize)
+                if ((GetWeightSum()+addedItem.Weight) <= _maxWeight && (GetSizeSum()+addedItem.Size) <= _maxSize)
                 {
-                    _inventoryList.Add(itemAdd);
-                    itemAdd.Inventory = this;
+                    _inventoryList.Add(addedItem);
+                    addedItem.Inventory = this;
                 }
                 else
                 {
-                    throw (new ArgumentException("Item with the Name: " + itemAdd.Name + " with Size value " + itemAdd.Size +
-                        " with Weight value " + itemAdd.Weight + " cannot be added to the inventory"));
+                    throw (new ArgumentException("Item with the Name: " + addedItem.Name + " with Size value " + addedItem.Size +
+                        " with Weight value " + addedItem.Weight + " cannot be added to the inventory"));
                 }
             }
         }
